@@ -22,27 +22,52 @@ public class Fraction implements IFraction {
 
     @Override
     public IFraction plus(IFraction other) {
-        throw new UnsupportedOperationException();
+        int sameNum = getDenominator() * other.getDenominator();
+        int newUp = (getNumerator() * other.getDenominator()) + (other.getNumerator() * getDenominator());
+        return createNormalised(newUp, sameNum);
     }
 
     @Override
     public IFraction minus(IFraction other) {
-        throw new UnsupportedOperationException();
+        int sameNum = getDenominator() * other.getDenominator();
+        int newUp = (getNumerator() * other.getDenominator()) - (other.getNumerator() * getDenominator());
+        return createNormalised(newUp, sameNum);
     }
 
     @Override
     public IFraction times(IFraction other) {
-        throw new UnsupportedOperationException();
+        int newUp = getNumerator() * other.getNumerator();
+        int newDown = getDenominator() * other.getDenominator();
+        return createNormalised(newUp, newDown);
     }
 
     @Override
     public IFraction dividedBy(IFraction other) {
-        throw new UnsupportedOperationException();
+        int newUp = getNumerator() * other.getDenominator();
+        int newDown = getDenominator() * other.getNumerator();
+        return createNormalised(newUp, newDown);
     }
 
+    /***
+     * 18/12 /:6
+     * 3/2
+     *
+     * @param numerator
+     * @param denominator
+     * @return
+     */
     public static Fraction createNormalised(Integer numerator, Integer denominator) {
-        throw new UnsupportedOperationException();
+        var gcd = gcdByEuclidsAlgorithm(numerator, denominator);
+        return new Fraction(numerator / gcd, denominator / gcd);
     }
+
+    private static int gcdByEuclidsAlgorithm(int n1, int n2) {
+        if (n2 == 0) {
+            return n1;
+        }
+        return gcdByEuclidsAlgorithm(n2, n1 % n2);
+    }
+
 
     @Override
     public String toString() {
