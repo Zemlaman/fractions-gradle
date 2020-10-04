@@ -8,9 +8,6 @@ public class TestSubtraction {
         var fraction = TestUtils.createFraction(3, 5);
         var result = fraction.minus(new NotImplementedFraction(2, 5));
 
-        System.out.println(fraction);
-        System.out.println(result);
-
         Assert.assertEquals((Integer) 1, result.getNumerator());
         Assert.assertEquals((Integer) 5, result.getDenominator());
     }
@@ -19,9 +16,6 @@ public class TestSubtraction {
     public void testNormalisation() {
         var fraction = TestUtils.createFraction(3, 2);
         var result = fraction.minus(new NotImplementedFraction(1, 2));
-
-        System.out.println(fraction);
-        System.out.println(result);
 
         Assert.assertEquals((Integer) 1, result.getNumerator());
         Assert.assertEquals((Integer) 1, result.getDenominator());
