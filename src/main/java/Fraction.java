@@ -7,7 +7,7 @@ public class Fraction implements IFraction {
         this.numerator = numerator;
         this.denominator = denominator;
 
-        if (denominator == 0) throw new ArithmeticException("Cannot Divide by 0");
+        if (denominator == 0) throw new ArithmeticException("Kde jsi viděl dělit nulou šašku??");
     }
 
     @Override
@@ -22,29 +22,29 @@ public class Fraction implements IFraction {
 
     @Override
     public IFraction plus(IFraction other) {
-        int sameNum = getDenominator() * other.getDenominator();
-        int newUp = (getNumerator() * other.getDenominator()) + (other.getNumerator() * getDenominator());
+        var sameNum = getDenominator() * other.getDenominator();
+        var newUp = (getNumerator() * other.getDenominator()) + (other.getNumerator() * getDenominator());
         return createNormalised(newUp, sameNum);
     }
 
     @Override
     public IFraction minus(IFraction other) {
-        int sameNum = getDenominator() * other.getDenominator();
-        int newUp = (getNumerator() * other.getDenominator()) - (other.getNumerator() * getDenominator());
+        var sameNum = getDenominator() * other.getDenominator();
+        var newUp = (getNumerator() * other.getDenominator()) - (other.getNumerator() * getDenominator());
         return createNormalised(newUp, sameNum);
     }
 
     @Override
     public IFraction times(IFraction other) {
-        int newUp = getNumerator() * other.getNumerator();
-        int newDown = getDenominator() * other.getDenominator();
+        var newUp = getNumerator() * other.getNumerator();
+        var newDown = getDenominator() * other.getDenominator();
         return createNormalised(newUp, newDown);
     }
 
     @Override
     public IFraction dividedBy(IFraction other) {
-        int newUp = getNumerator() * other.getDenominator();
-        int newDown = getDenominator() * other.getNumerator();
+        var newUp = getNumerator() * other.getDenominator();
+        var newDown = getDenominator() * other.getNumerator();
         return createNormalised(newUp, newDown);
     }
 
