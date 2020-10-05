@@ -48,14 +48,6 @@ public class Fraction implements IFraction {
         return createNormalised(newUp, newDown);
     }
 
-    /***
-     * 18/12 /:6
-     * 3/2
-     *
-     * @param numerator
-     * @param denominator
-     * @return
-     */
     public static Fraction createNormalised(Integer numerator, Integer denominator) {
         var gcd = gcdByEuclidsAlgorithm(numerator, denominator);
         return new Fraction(numerator / gcd, denominator / gcd);
